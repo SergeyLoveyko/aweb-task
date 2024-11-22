@@ -338,6 +338,25 @@ a {
 
 
 
+/* section description */
+
+.descriptio {
+  padding: 50px 0px;
+}
+
+.descriptio__text {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.descriptio__text:nth-child(1) {
+  margin-bottom: 20px;
+}
+
+
+
+
+/* media queries */
 
 @media screen and (max-width: 678px) {
 
