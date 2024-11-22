@@ -354,6 +354,24 @@ a {
 }
 
 
+/* section view */
+
+.view {
+  padding: 50px 0;
+  background-color: rgb(77, 199, 230);
+}
+
+.view__title {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.view__text {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+
 
 
 /* media queries */
