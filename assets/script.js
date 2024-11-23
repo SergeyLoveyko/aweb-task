@@ -45,3 +45,45 @@ function moveSlider(direction) {
     }
   }, {once: true})  // remove the event Listener after it's triggered
 }
+
+
+
+
+
+// slider cards hidden
+
+function debounce(func, wait = 20, immediate = true) {
+  let timeout;
+  return function() {
+    let context = this, args = arguments;
+    let later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    let callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  }
+}
+
+const sliderCards = document.querySelectorAll('.species__item');
+
+function checkSlide(e) {
+  // console.log( window.scrollY );
+  sliderCards.forEach(sliderCard => {
+    // half way through the image
+    const slideInAt = (window.scrollY + window.innerHeight) - sliderCard.style.height / 2;
+    // bottom of the image
+    const cardBottom = sliderCard.offsetTop + sliderCard.style.height;
+    const isHalfShown = slideInAt > sliderCard.offsetTop;
+    const isNotScrolledPast = window.scrollY < cardBottom;
+    if (isHalfShown && isNotScrolledPast) {
+      sliderCard.classList.add('active');
+    } else {
+      sliderCard.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', debounce(checkSlide));
